@@ -27,7 +27,13 @@ namespace SBIgraphic.ViewModel
         {
 
             MyModel = new PlotModel { Title = "Example 1" };
-            MyModel.Series.Add(new FunctionSeries(Math.Cos, 0, 10, 0.1, "cos(x)"));
+            var series = new OxyPlot.Series.LineSeries();
+            for (int i = 0; i < 10; i++)
+            {
+                series.Points.Add(new DataPoint(0, i));
+            }
+
+            MyModel.Series.Add(series);
             return MyModel;
         }
 
