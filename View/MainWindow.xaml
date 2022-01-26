@@ -43,8 +43,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Grid Grid.Row="0" Grid.Column="4" x:Name="Plot1">
-            <oxy:PlotView Model="{Binding PlotModel}"/>
+        <Grid Grid.Row="0" Grid.Column="4">
+            <oxy:PlotView Model="{Binding MyModel}"/>
 
         </Grid>
         <StackPanel Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal"

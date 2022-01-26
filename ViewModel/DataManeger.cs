@@ -18,22 +18,20 @@ namespace SBIgraphic.ViewModel
     {
         public DataManeger()
         {
-            PlotModel = new PlotModel();
-
-
+            setUpModel();
         }
-        public void SetUpModel()
+        public PlotModel MyModel { get; set; }
+
+
+        private PlotModel setUpModel()
         {
-            this.PlotModel = new PlotModel { Title = "Example 1" };
-            this.PlotModel.Series.Add(new FunctionSeries(Math.Cos, 0, 10, 0.1, "cos(x)"));
 
+            MyModel = new PlotModel { Title = "Example 1" };
+            MyModel.Series.Add(new FunctionSeries(Math.Cos, 0, 10, 0.1, "cos(x)"));
+            return MyModel;
         }
-        private PlotModel plotModel;
-        public PlotModel PlotModel
-        {
-            get { return plotModel; }
-            set { plotModel = value; NotifyPropertyChanged("PlotModel"); }
-        }
+
+
 
 
 
@@ -120,7 +118,7 @@ namespace SBIgraphic.ViewModel
                         AllTolshina = DataWorker.GetAllZamerTolshinaByPlavkaId(selectPlavka.Id);
                         View.MainWindow.AllViewShirina.ItemsSource = AllHirina;
                         View.MainWindow.AllViewTolshina.ItemsSource = AllTolshina;
-                        SetUpModel();
+
                     }
                     catch (Exception ex)
                     {
