@@ -1,0 +1,59 @@
+﻿<Window x:Class="SBIgraphic.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:local="clr-namespace:SBIgraphic.View"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="448" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Column="0" Grid.Row="0"  x:Name="ViewAllPlavki" ItemsSource="{Binding AllPlavka}" SelectedItem="{Binding selectPlavka }" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding  Id }"/>
+                    <GridViewColumn Header="номер плавки" DisplayMemberBinding="{Binding  NomerPlavki}"/>
+                    <GridViewColumn Header="номер штуки " DisplayMemberBinding="{Binding  NomerShtuki}"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView Grid.Row="0" Grid.Column="1" x:Name="ViewAllShirina" ItemsSource="{Binding AllHirina}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ширина " DisplayMemberBinding="{Binding Shirina}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView Grid.Row="0" Grid.Column="2" x:Name="ViewAllTolshina" ItemsSource="{Binding AllTolshina}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="толщина" DisplayMemberBinding="{Binding Tolshina}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid Grid.Row="0" Grid.Column="4" x:Name="Plot1">
+            <oxy:PlotView Model="{Binding PlotModel}"/>
+
+        </Grid>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="4" Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button x:Name="ConnectBD" Content="Create" Command="{Binding UpdatePlavki}" Width="57" Click="ConnectBD_Click" />
+            <Button Content="Open" Command="{Binding OpenPlavki}" Width="63" />
+            <Button Content="Замеры" Command="{Binding OpenShirina}" Width="63" />
+
+        </StackPanel>
+
+    </Grid>
+</Window>
